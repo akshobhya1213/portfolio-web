@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Akshobhya KS — AI/ML &amp; Backend Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Syne:wght@700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--soft:#F5F6FA;--ink:#0A0A0A;--muted:#5B6070;--line:#E3E5EE;--accent:#4338CA;--tint:#ECEBFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Figtree,system-ui,sans-serif;overflow-x:hidden;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background:
+   linear-gradient(180deg,#FFFFFF 0%,#F6F5FF 40%,#EFEEFF 100%),
+   radial-gradient(750px circle at 12% 6%,rgba(99,102,241,.20),transparent 60%),
+   radial-gradient(800px circle at 88% 28%,rgba(124,58,237,.16),transparent 62%),
+   radial-gradient(700px circle at 20% 70%,rgba(59,130,246,.14),transparent 60%),
+   radial-gradient(650px circle at 80% 92%,rgba(139,92,246,.14),transparent 60%)}
+h1,h2,h3{font-family:Syne,Figtree,sans-serif;margin:0;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1160px,100% - 48px);margin:0 auto}
+section{padding:90px 0}
+h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:36px}
+h2::after{content:"";display:block;height:4px;width:56px;margin-top:14px;background:var(--accent);border-radius:4px}
+
+/* NAVIGATION - SPACIOUS & RESPONSIVE */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:72px;width:min(1360px,100% - 48px);gap:32px}
+.logo{font:800 1.15rem Syne,sans-serif;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:12px;flex-shrink:0;letter-spacing:-.01em;padding-right:12px}
+.mark{width:38px;height:38px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.95rem;letter-spacing:0;box-shadow:0 4px 12px rgba(67,56,202,.25)}
+nav ul{display:flex;align-items:center;gap:26px;list-style:none;margin:0 auto 0 0;padding:0;flex-wrap:nowrap}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:600;padding:6px 10px;border-radius:8px;transition:all .2s ease;white-space:nowrap}
+nav a:hover{color:var(--accent);background:var(--tint)}
+.nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.soc{display:flex;gap:8px}
+.soc a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--ink);transition:all .35s cubic-bezier(.2,.9,.25,1.3)}
+.soc a:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-3px) scale(1.08);box-shadow:0 6px 16px rgba(67,56,202,.25)}
+.soc svg{width:18px;height:18px}
+[data-ic] svg{width:1.15em;height:1.15em;display:block}
+.clockbadge{display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;color:#374056;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:8px 16px;white-space:nowrap}
+.clockbadge i{width:8px;height:8px;border-radius:50%;background:#10B981;box-shadow:0 0 0 3px rgba(16,185,129,.18);flex:none;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.4}}
+
+@media(max-width:1150px){nav ul{gap:16px}nav a{font-size:.9rem;padding:5px 7px}nav .wrap{gap:18px}}
+@media(max-width:940px){.clockbadge span{display:none}.clockbadge{padding:8px}}
+@media(max-width:780px){nav ul{display:none}.clockbadge{display:none}}
+
+/* HERO */
+#hero{min-height:calc(100svh - 72px);display:flex;flex-direction:column;justify-content:center;text-align:left;overflow:hidden;padding:48px 0 36px}
+h1{font:700 clamp(2rem,8.5vw,6.2rem)/1.1 Inter,system-ui,sans-serif;letter-spacing:-.035em;color:#14162B;white-space:nowrap;min-height:1.1em;margin:0}
+#t1{white-space:pre}
+.caret{display:inline-block;width:.055em;height:.82em;margin-left:.06em;background:#14162B;vertical-align:-.06em;animation:blink 1s steps(2,start) infinite}
+@keyframes blink{50%{opacity:0}}
+.role{font:500 clamp(1.05rem,2.4vw,1.5rem) Inter,system-ui,sans-serif;color:#6B7280;margin:14px 0 28px;opacity:0;transition:opacity .5s}
+.role.show{opacity:1}
+#hero .cta{justify-content:flex-start}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink);transition:transform .35s cubic-bezier(.2,.9,.25,1.3),box-shadow .35s;display:inline-flex;align-items:center;gap:10px}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 26px rgba(0,0,0,.14)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.stack{margin-top:56px}
+.stack p{margin:0 0 16px;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.mq{overflow:hidden;margin:12px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.tr{display:flex;width:max-content;gap:18px;align-items:center;animation:mv 38s linear infinite}
+.mq.rev .tr{animation-direction:reverse;animation-duration:46s}
+.mq:hover .tr{animation-play-state:paused}
+@keyframes mv{to{transform:translateX(-50%)}}
+.pill{padding:10px 24px;border:1.5px solid var(--line);border-radius:999px;background:var(--soft);font-size:.85rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#2A2E40;white-space:nowrap}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+.rv{opacity:0;transform:translateY(36px);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+
+/* HIGHLIGHT STATS */
+.hs{padding:0 0 90px}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.hcard{position:relative;background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);border-radius:16px;padding:26px 24px;overflow:hidden;cursor:default;
+ transition:transform .45s cubic-bezier(.2,.9,.25,1.3),box-shadow .45s cubic-bezier(.2,.9,.25,1.3),border-color .3s,background .3s}
+.hcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--bar);transition:width .3s}
+.hcard::after{content:"";position:absolute;inset:0;border-radius:16px;background:var(--bar);opacity:0;transition:opacity .35s;pointer-events:none}
+.hcard:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px -12px color-mix(in srgb,var(--bar) 45%,transparent);border-color:color-mix(in srgb,var(--bar) 40%,var(--line));background:#fff}
+.hcard:hover::before{width:6px}
+.hcard:hover::after{opacity:.05}
+.tile{width:46px;height:46px;border-radius:12px;background:var(--tint);color:var(--accent);display:grid;place-items:center;margin-bottom:14px;transition:all .25s;flex:none}
+.tile svg{width:22px;height:22px}
+.hcard .tile{background:#fff;border:1px solid var(--line);margin-bottom:22px;transition:transform .45s cubic-bezier(.2,.9,.2,1.4),background .3s,color .3s,border-color .3s;position:relative;z-index:1}
+.hcard:hover .tile{transform:scale(1.14) rotate(-6deg);background:var(--bar);color:#fff;border-color:var(--bar)}
+.hcard b,.hcard h3,.hcard span{position:relative;z-index:1}
+.hcard b{transition:color .3s;display:block;font:800 2.4rem Syne,sans-serif;letter-spacing:-.02em}
+.hcard:hover b{color:var(--bar)}
+.hcard h3{font-size:1.05rem;margin:6px 0 4px}
+.hcard span{color:var(--muted);font-size:.9rem}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
+.about p{margin:0 0 16px;max-width:60ch;color:#2A2E40}
+.stats{display:grid;gap:14px;align-content:start}
+.stat{background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);border-radius:18px;padding:16px 22px;display:flex;align-items:center;gap:16px;transition:transform .3s cubic-bezier(.2,.9,.25,1.2),box-shadow .3s}
+.stat:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(20,20,60,.08)}
+.stat .tile{margin:0}
+.stat h3{font-size:1.2rem}
+.stat span{color:var(--muted)}
+@media(max-width:800px){.about{grid-template-columns:1fr}}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:36px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl .fill{position:absolute;left:7px;top:6px;width:2px;height:0;background:var(--accent);transition:height 1.6s ease}
+.tl.on .fill{height:calc(100% - 12px)}
+.job{position:relative;margin-bottom:36px}
+.job::before{content:"";position:absolute;left:-36px;top:8px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.job h3{font-size:1.5rem}
+.meta{color:var(--muted);font-size:.95rem;margin:4px 0 10px}
+.job ul{margin:0;padding-left:18px;max-width:68ch;color:#2A2E40}
+
+/* CARDS / PROJECTS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:24px;cursor:default;
+ transition:transform .4s cubic-bezier(.2,.9,.25,1.25),box-shadow .4s cubic-bezier(.2,.9,.25,1.25),border-color .3s}
+.card:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 20px 40px -14px rgba(67,56,202,.35);border-color:var(--accent)}
+.card h3{font-size:1.35rem;margin:0 0 8px}
+.card p{margin:0 0 12px;color:#2A2E40;font-size:.97rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tags span{font-size:.78rem;padding:3px 10px;border-radius:999px;background:var(--tint);color:var(--accent);font-weight:500}
+.lk a{color:var(--accent);font-weight:600;margin-right:16px;text-decoration:none}
+.lk a:hover{text-decoration:underline}
+
+/* SKILLS */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.skills h3{font-size:1.25rem;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font-size:.93rem;transition:all .3s cubic-bezier(.2,.9,.25,1.3)}
+.chip:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-3px) scale(1.05)}
+
+/* ACHIEVEMENTS */
+.ach{font:800 1.9rem Syne,sans-serif;color:var(--accent);margin-bottom:6px}
+.certs{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.cert{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:14px;background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);border-left:4px solid var(--accent);transition:transform .25s}
+.cert:hover{transform:translateY(-4px)}
+.cert svg{color:var(--accent)}
+.sub{font:800 1.4rem Syne,sans-serif;margin:40px 0 0}
+.eyebrow{font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+
+/* LIVE GITHUB ACTIVITY SECTION */
+.gh-header-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+.gh-header-row h2{margin-bottom:0}
+.gh-profile-btn{display:inline-flex;align-items:center;gap:10px;background:#14162B;color:#fff;padding:12px 22px;border-radius:999px;font-size:.9rem;font-weight:700;text-decoration:none;transition:all .3s cubic-bezier(.2,.9,.25,1.3)}
+.gh-profile-btn:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 10px 24px rgba(67,56,202,.35);color:#fff}
+.ghwrap{background:rgba(255,255,255,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(227,229,238,.9);border-radius:24px;padding:32px;overflow-x:auto;box-shadow:0 16px 40px -18px rgba(67,56,202,.15);transition:box-shadow .4s,transform .4s cubic-bezier(.2,.9,.25,1.2)}
+.ghwrap:hover{box-shadow:0 24px 48px -16px rgba(67,56,202,.25);transform:translateY(-3px)}
+.ghhead{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.gh-user-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ghbadge{display:inline-flex;align-items:center;gap:8px;background:#ECFDF5;color:#059669;border-radius:999px;padding:7px 16px;font-size:.82rem;font-weight:700}
+.ghbadge i{width:8px;height:8px;border-radius:50%;background:#10B981;display:inline-block;animation:pulse 2s ease-in-out infinite}
+.gh-sync-status{font-size:.85rem;color:var(--muted);font-weight:500}
+.gh-quick-stats{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gh-stat-chip{background:var(--soft);border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:.82rem;color:#374056;font-weight:600}
+.gh-stat-chip strong{color:var(--accent);font-weight:800}
+.ghgrid{display:grid;grid-auto-flow:column;grid-template-rows:16px repeat(7,13px);gap:3.5px;margin-top:14px;min-width:780px}
+.ghgrid .m{grid-row:1;font-size:.72rem;color:var(--muted);font-weight:600;align-self:end}
+.ghcell{width:13px;height:13px;border-radius:3px;background:#EBEDF7;position:relative;cursor:pointer;transition:transform .15s ease}
+.ghcell:hover{transform:scale(1.4);outline:2px solid var(--accent);z-index:5}
+.ghcell[data-l="1"]{background:#C7D2FE}
+.ghcell[data-l="2"]{background:#93A5F7}
+.ghcell[data-l="3"]{background:#6673E8}
+.ghcell[data-l="4"]{background:var(--accent)}
+.ghfoot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:.88rem;font-weight:500}
+.ghleg{display:flex;align-items:center;gap:6px}
+.ghleg .ghcell{width:12px;height:12px}
+
+/* CONTACT SECTION & BIG CONTACT FORM CONTAINER */
+#contact{text-align:left}
+#contact .wrap{width:min(1240px,100% - 48px)}
+.cwrap{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:start;text-align:left}
+.cwrap h2{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:20px}
+.cwrap h2::after{display:none}
+.cwrap>div:first-child p{color:#4B5065;max-width:52ch;margin:0 0 16px;font-size:1.02rem}
+.ccards{display:grid;gap:14px;margin-top:28px}
+.ccard{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:18px 20px;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.2,.9,.25,1.3),box-shadow .35s,border-color .3s}
+.ccard:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 14px 30px rgba(67,56,202,.16);border-color:var(--accent)}
+.ccard:hover .tile{background:var(--accent);color:#fff}
+.ccard.loc:hover{transform:none;box-shadow:none}
+.ccard .tile{margin:0;flex:none}
+.ccard .lbl{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:700}
+.ccard .val{font-weight:700;font-size:1.02rem}
+.ccard.loc{background:#14162B;color:#fff}
+.ccard.loc .lbl{color:#9BA0C4}
+.ccard.loc .dot{width:8px;height:8px;border-radius:50%;background:#34D399;display:inline-block;margin-right:8px}
+
+/* ENLARGED CONTACT FORM CONTAINER */
+.cform{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid rgba(227,229,238,.95);border-radius:28px;padding:44px 42px;box-shadow:0 24px 56px -18px rgba(67,56,202,.14),0 4px 16px rgba(0,0,0,.03);position:relative;transition:box-shadow .4s,border-color .4s,transform .4s cubic-bezier(.2,.9,.25,1.2)}
+.cform:hover{box-shadow:0 30px 60px -20px rgba(67,56,202,.24);transform:translateY(-3px)}
+.cform:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(67,56,202,.14),0 28px 56px -18px rgba(67,56,202,.28)}
+.cform-header{margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.cform-header h3{font-size:1.55rem;font-weight:800;color:var(--ink);margin-bottom:6px}
+.cform-header p{color:var(--muted);font-size:.95rem;margin:0}
+.cform-group{margin-bottom:22px}
+.cform label{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#374056;margin:0 0 10px;font-weight:700}
+.cform input,.cform textarea{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:16px 18px;font:inherit;font-size:1.02rem;color:var(--ink);transition:all .25s ease;box-shadow:0 1px 3px rgba(0,0,0,.02)}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(67,56,202,.14)}
+.cform textarea{resize:vertical;min-height:160px}
+.cform button{width:100%;border:0;border-radius:14px;padding:18px 26px;background:var(--accent);color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:.02em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;transition:all .3s cubic-bezier(.2,.9,.25,1.3);box-shadow:0 12px 28px -6px rgba(67,56,202,.35);margin-top:6px}
+.cform button:hover{transform:translateY(-2px);background:#3730a3;box-shadow:0 18px 36px -8px rgba(67,56,202,.45)}
+.cform button:disabled{opacity:.65;cursor:wait;transform:none}
+.cform-msg{margin-top:18px;font-size:.92rem;font-weight:600;text-align:left;border-radius:12px;padding:14px 18px;display:none;line-height:1.5}
+.cform-msg.ok{display:block;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0}
+.cform-msg.err{display:block;background:#FEF2F2;color:#991B1B;border:1px solid #FECACA}
+.cform-msg.info{display:block;background:#EFF6FF;color:#1E40AF;border:1px solid #BFDBFE}
+.cform-gmail-alt{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line);display:flex;align-items:center;justify-content:center;gap:8px;font-size:.92rem;color:var(--muted);text-align:center;flex-wrap:wrap}
+.cform-gmail-alt a{color:var(--accent);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.cform-gmail-alt a:hover{text-decoration:underline}
+
+/* CTA BAND & FOOTER */
+.cta-band{background:linear-gradient(135deg,#14162B,#22254A);color:#fff;padding:70px 0;margin-top:30px}
+.cta-band .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta-band .eyebrow{color:#9BE8DD}
+.cta-band h3{font:800 clamp(1.7rem,4vw,2.7rem) Syne,sans-serif;color:#fff;max-width:16ch}
+.cta-btn{background:#fff;color:#14162B;padding:15px 28px;border-radius:999px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .3s cubic-bezier(.2,.9,.25,1.3),box-shadow .3s}
+.cta-btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+
+.ftr{background:#0E1024;color:#C7CAE0;padding:60px 0 30px}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px}
+.fgrid h4{color:#fff;font:800 1.15rem Syne,sans-serif;margin-bottom:4px}
+.fgrid p{color:#9297B8;max-width:34ch;margin:10px 0}
+.status{display:inline-flex;align-items:center;gap:8px;background:rgba(52,211,153,.12);color:#6EE7B7;border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:600;margin-top:8px}
+.status i{width:7px;height:7px;border-radius:50%;background:#34D399;display:inline-block}
+.fnav a{display:block;color:#C7CAE0;text-decoration:none;padding:6px 0;font-size:.95rem;transition:color .25s,transform .25s,padding-left .25s}
+.fnav a:hover{color:#fff;transform:translateX(4px)}
+.fnav h4{margin-bottom:10px}
+.fsoc a{display:flex;align-items:center;gap:10px;color:#C7CAE0;text-decoration:none;padding:6px 0;font-size:.95rem;transition:color .25s,transform .25s}
+.fsoc a:hover{color:#fff;transform:translateX(4px)}
+.fbot{margin-top:40px;padding-top:22px;border-top:1px solid #262A50;color:#6B6F94;font-size:.85rem;text-align:center}
+@media(max-width:850px){.cwrap{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- TOP NAVIGATION BAR -->
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#hero">
+      <span class="mark">AK</span>
+      <span>AKSHOBHYA.KS</span>
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#github">GitHub</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="clockbadge" id="clockbadge">
+        <i></i>
+        <span id="clocktime">02:32 pm IST · Bengaluru</span>
+      </div>
+      <div class="soc">
+        <a href="https://github.com/akshobhya1213" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile of Akshobhya KS"><span data-ic="github"></span></a>
+        <a href="https://www.linkedin.com/in/akshobhya-ks-26bb3138b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of Akshobhya KS"><span data-ic="linkedin"></span></a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=akshobhyaks1@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Compose direct email in Gmail to akshobhyaks1@gmail.com"><span data-ic="mail"></span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<header id="hero"><div class="wrap">
+<h1 aria-label="Akshobhya KS"><span id="t1" aria-hidden="true"></span><span id="t2" class="grad" aria-hidden="true"></span><i class="caret" aria-hidden="true"></i></h1>
+<div class="role" id="role">Software Developer · Software Tester · Java Developer · AI/ML Engineer</div>
+<div class="cta"><a class="btn pri" href="#projects">See my work <span data-ic="arrow"></span></a><a class="btn" href="#contact"><span data-ic="mail"></span> Contact me</a></div>
+<div class="stack"><p>Tech stack</p><div class="mq" id="m1"></div><div class="mq rev" id="m2"></div></div>
+</div></header>
+
+<!-- STATS CARDS -->
+<section class="hs"><div class="wrap"><div class="hgrid">
+<div class="hcard rv" style="--bar:#7C6CF5"><span class="tile" data-ic="clock"></span><b data-to="3" data-suf="+">0</b><h3>Years Building</h3><span>Engineering &amp; learning</span></div>
+<div class="hcard rv" style="--bar:#2DB9A8"><span class="tile" data-ic="folder"></span><b data-to="10" data-suf="+">0</b><h3>Projects</h3><span>Java backend, AI and full stack</span></div>
+<div class="hcard rv" style="--bar:#4A9BE8"><span class="tile" data-ic="terminal2"></span><b data-to="50" data-suf="K+">0</b><h3>Lines of Code</h3><span>Java · Python · JS</span></div>
+</div></div></section>
+
+<!-- ABOUT -->
+<section id="about"><div class="wrap about">
+<div class="rv"><h2>About</h2>
+<p>I'm a final-year B.Tech student in Artificial Intelligence and Machine Learning at DSATM, Bangalore, with a strong interest in software development, particularly as a Java developer and an AI/ML engineer.</p>
+<p>On the backend side, I design secure, scalable REST APIs with Spring Boot, Spring Security and JPA/Hibernate, and I'm currently building the Account Service for a digital banking platform at Infosys Springboard using Spring Boot, Kafka and PostgreSQL.</p>
+<p>On the AI/ML side, I build and evaluate models across computer vision, NLP and fraud detection, and ship them through RAG pipelines and LLM-integrated backends.</p></div>
+<div class="stats rv" style="--d:150ms">
+<div class="stat"><span class="tile" data-ic="terminal"></span><div><h3>Java Intern</h3><span>Infosys Springboard</span></div></div>
+<div class="stat"><span class="tile" data-ic="chart"></span><div><h3>Data Analyst Intern</h3><span>SkillCraft Technology</span></div></div>
+<div class="stat"><span class="tile" data-ic="folder"></span><div><h3>10+ Projects</h3><span>Java backend, AI and full stack</span></div></div></div>
+</div></section>
+
+<!-- EXPERIENCE -->
+<section id="experience"><div class="wrap"><h2 class="rv">Experience</h2>
+<div class="tl" id="tl"><div class="fill"></div>
+<div class="job rv"><h3>Java Intern · Infosys Springboard</h3><div class="meta">Remote · June 2026 – Present</div>
+<ul><li>Building the Account Service for FinCore Nexus, a microservices-based digital banking platform: REST APIs with Spring Boot and JPA/Hibernate on a normalized PostgreSQL schema.</li><li>Applying the Saga pattern across Account, Loan and Payment microservices, with Kafka events and Docker.</li></ul></div>
+<div class="job rv"><h3>Data Analyst Intern · SkillCraft Technology</h3><div class="meta">Remote · Oct – Nov 2025</div>
+<ul><li>Decision Tree on Bank Marketing data at 91% accuracy, evaluated with precision, recall, F1 and a confusion matrix.</li><li>EDA on the Titanic dataset and visualizations of India's population demographics.</li></ul></div>
+<div class="job rv"><h3>B.Tech, AI and Machine Learning · DSATM</h3><div class="meta">Bangalore · 2023 – May 2027</div></div>
+</div></div></section>
+
+<!-- PROJECTS -->
+<section id="projects"><div class="wrap"><h2 class="rv">Projects</h2>
+<div class="grid">
+<article class="card rv" style="--d:0ms"><h3>Secure E-Commerce Backend Platform</h3><p>Secure REST backend with 10+ endpoints for catalog, cart and orders. JWT authentication with role-based access for Admin, Seller and Customer, plus global exception handling, validation and pagination.</p><div class="tags"><span>Java</span><span>Spring Boot</span><span>Spring Security</span><span>JWT</span><span>JPA / Hibernate</span><span>MySQL</span></div><div class="lk"><a href="https://github.com/akshobhya1213/ecommerce-backend" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card rv" style="--d:100ms"><h3>AI-Powered Expense Analytics Platform</h3><p>REST backend with 15+ endpoints for expenses and analytics. Redis cache-aside with TTL expiry, write-triggered invalidation and MySQL fallback. Gemini API insights, JWT auth and Docker Compose.</p><div class="tags"><span>Spring Boot</span><span>Redis</span><span>MySQL</span><span>Gemini API</span><span>Docker</span></div><div class="lk"><a href="https://github.com/akshobhya1213" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card rv" style="--d:0ms"><h3>InsureGuard — AI Insurance Claims Processing Platform</h3><p>JWT-secured Spring Boot backend combining IBM Watson NLU and YOLO damage detection for insurance claims. Kafka pipelines run AI analysis off the request thread, with explainable rule-based fraud scoring and Redis caching.</p><div class="tags"><span>Spring Boot</span><span>Kafka</span><span>Redis</span><span>IBM Watson NLU</span><span>Roboflow</span><span>Docker</span></div><div class="lk"><a href="https://github.com/akshobhya1213" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card rv" style="--d:100ms"><h3>RAG-Based Enterprise Document Intelligence System</h3><p>RAG pipeline that indexes documents in FAISS and answers from retrieved context, cutting hallucinations. Spring Boot APIs for upload, query and history.</p><div class="tags"><span>Python</span><span>LangChain</span><span>FAISS</span><span>OpenAI</span><span>Spring Boot</span></div><div class="lk"><a href="https://github.com/akshobhya1213" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card rv" style="--d:0ms"><h3>TrafficVision — Real-Time Traffic Analytics Engine</h3><p>Real-time vehicle detection with YOLOv8 at 92%+ accuracy across cars, bikes, buses and trucks, with per-class counts for traffic density.</p><div class="tags"><span>Python</span><span>YOLOv8</span><span>OpenCV</span></div><div class="lk"><a href="https://github.com/akshobhya1213" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card rv" style="--d:100ms"><h3>UPI Fraud Detection &amp; Risk Scoring Engine</h3><p>Flags suspicious UPI transactions and assigns behavioral risk scores at 92%+ detection accuracy.</p><div class="tags"><span>Python</span><span>Pandas</span><span>Scikit-learn</span><span>Streamlit</span></div><div class="lk"><a href="https://github.com/akshobhya1213" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card rv" style="--d:0ms"><h3>AI-Driven Expense Categorization System</h3><p>Categorizes transactions into 8+ categories with the Gemini API at 90%+ accuracy, with monthly insights and charts.</p><div class="tags"><span>Flask</span><span>SQLite</span><span>Gemini API</span><span>Chart.js</span></div><div class="lk"><a href="https://github.com/akshobhya1213" target="_blank" rel="noopener">GitHub</a></div></article>
+<article class="card rv" style="--d:100ms"><h3>Railway Ticket Reservation &amp; Booking Platform</h3><p>Full-stack train ticket booking platform with seat availability search, booking management and user authentication.</p><div class="tags"><span>Django</span><span>Python</span><span>Django ORM</span><span>Django Auth</span><span>SQLite</span><span>HTML/CSS</span><span>Bootstrap</span></div><div class="lk"><a href="https://github.com/akshobhya1213/trainreservationproject" target="_blank" rel="noopener">GitHub</a></div></article>
+</div></div></section>
+
+<!-- SKILLS -->
+<section id="skills"><div class="wrap"><h2 class="rv">Skills</h2>
+<div class="skills" id="sk"></div></div></section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements"><div class="wrap"><h2 class="rv">Achievements</h2>
+<div class="grid">
+<article class="card rv"><span class="tile" data-ic="award"></span><div class="ach">Patent</div><h3>AI-Based UPI Fraud Detection and Behavioural Risk Scoring System using ML</h3><p>Patent application submitted.</p></article>
+<article class="card rv" style="--d:100ms"><span class="tile" data-ic="book"></span><div class="ach">Publication</div><h3>AI-Based UPI Fraud Detection and Behavioural Risk Scoring System using ML</h3><p>In progress.</p></article>
+<article class="card rv" style="--d:200ms"><span class="tile" data-ic="trophy"></span><div class="ach">Coding</div><h3>LeetCode</h3><p>250+ problems solved and counting.</p></article>
+<article class="card rv" style="--d:300ms"><span class="tile" data-ic="mega"></span><div class="ach">Hackathons</div><h3>Hackathon participant</h3><p>Participated in several hackathons.</p></article>
+<article class="card rv" style="--d:400ms"><span class="tile" data-ic="book"></span><div class="ach">Certifications</div><h3>10+ Certifications</h3><p>Including IBM AI, Scaler Spring Boot, Infosys Springboard (AI/ML, DBMS, Cyber Security) and Deloitte and Tata job simulations.</p></article>
+</div>
+<div class="sub rv">Marketing and leadership</div>
+<div class="grid" style="margin-top:20px">
+<article class="card rv"><span class="tile" data-ic="mega"></span><h3>Marketing Team Member</h3><div class="meta">Gaming Club</div><p>Event promotion and audience outreach.</p></article>
+<article class="card rv" style="--d:100ms"><span class="tile" data-ic="cal"></span><h3>Event Organizer</h3><div class="meta">TED Team</div><p>Supported planning and execution of TED events.</p></article>
+</div></div></section>
+
+<!-- LIVE GITHUB ACTIVITY -->
+<section id="github"><div class="wrap">
+  <div class="gh-header-row rv">
+    <div>
+      <p class="eyebrow">Contributions &amp; codebase</p>
+      <h2>GitHub Activity</h2>
+    </div>
+    <a class="gh-profile-btn" href="https://github.com/akshobhya1213" target="_blank" rel="noopener noreferrer">
+      <span data-ic="github"></span> View @akshobhya1213 on GitHub ↗
+    </a>
+  </div>
+
+  <div class="ghwrap rv">
+    <div class="ghhead">
+      <div class="gh-user-meta">
+        <span class="ghbadge"><i></i>Live GitHub Feed</span>
+        <span class="gh-sync-status" id="ghstatus">Fetching real-time activity…</span>
+      </div>
+      <div class="gh-quick-stats">
+        <span class="gh-stat-chip"><strong id="ghyearcount">121</strong> Contributions (2026)</span>
+        <span class="gh-stat-chip"><strong id="ghrepocount">9</strong> Repositories</span>
+      </div>
+    </div>
+    
+    <div class="ghgrid" id="ghgrid"></div>
+    
+    <div class="ghfoot">
+      <span id="ghcount">Live GitHub Contributions for @akshobhya1213</span>
+      <div class="ghleg">
+        Less 
+        <span class="ghcell" data-l="0" title="0 contributions"></span>
+        <span class="ghcell" data-l="1" title="1-2 contributions"></span>
+        <span class="ghcell" data-l="2" title="3-5 contributions"></span>
+        <span class="ghcell" data-l="3" title="6-9 contributions"></span>
+        <span class="ghcell" data-l="4" title="10+ contributions"></span>
+        More
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CONTACT SECTION & ENLARGED FORM -->
+<section id="contact"><div class="wrap">
+<div class="cwrap rv">
+<div>
+<p class="eyebrow">Get in touch</p>
+<h2>Let's Build Something <span style="color:var(--accent)">Real</span></h2>
+<p>Open to full-time and internship roles in Java backend development and AI/ML engineering.</p>
+<p>I'm looking for teams building production backends, ML pipelines, or GenAI-powered systems where I can contribute on both the engineering and the model side.</p>
+<div class="ccards">
+<a class="ccard" href="https://mail.google.com/mail/?view=cm&fs=1&to=akshobhyaks1@gmail.com" target="_blank" rel="noopener noreferrer" title="Click to open directly in Gmail with akshobhyaks1@gmail.com pre-filled">
+  <span class="tile" data-ic="mail"></span>
+  <div>
+    <div class="lbl">Direct Email (Opens in Gmail) ↗</div>
+    <div class="val">akshobhyaks1@gmail.com</div>
+  </div>
+</a>
+<a class="ccard" href="https://www.linkedin.com/in/akshobhya-ks-26bb3138b" target="_blank" rel="noopener noreferrer">
+  <span class="tile" data-ic="linkedin"></span>
+  <div>
+    <div class="lbl">Professional Network</div>
+    <div class="val">linkedin.com/in/akshobhya-ks-26bb3138b</div>
+  </div>
+</a>
+<a class="ccard" href="tel:+917975622848">
+  <span class="tile" data-ic="phone"></span>
+  <div>
+    <div class="lbl">Direct Line</div>
+    <div class="val">+91 7975622848</div>
+  </div>
+</a>
+<div class="ccard loc">
+  <span class="dot"></span>
+  <div class="val">Bangalore, Karnataka, India</div>
+</div>
+</div>
+</div>
+
+<!-- ENLARGED, SPACIOUS CONTACT FORM -->
+<form class="cform" id="cform">
+  <div class="cform-header">
+    <h3>Send Me a Message</h3>
+    <p>Have an opportunity or project in mind? Fill out this form and I will receive it directly in my inbox.</p>
+  </div>
+
+  <div class="cform-group">
+    <label for="cn">Your Name</label>
+    <input id="cn" name="name" type="text" placeholder="e.g. Alex Johnson" required>
+  </div>
+
+  <div class="cform-group">
+    <label for="ce">Your Email Address</label>
+    <input id="ce" name="email" type="email" placeholder="you@company.com" required>
+  </div>
+
+  <div class="cform-group">
+    <label for="cm">Message</label>
+    <textarea id="cm" name="message" placeholder="Tell me about the role, project, or what you'd like to collaborate on..." required></textarea>
+  </div>
+
+  <button type="submit" id="cbtn">
+    Send Message <span data-ic="arrow"></span>
+  </button>
+
+  <div class="cform-msg" id="cmsg"></div>
+
+  <div class="cform-gmail-alt">
+    <span>Prefer writing directly?</span>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=akshobhyaks1@gmail.com" target="_blank" rel="noopener noreferrer">
+      Open Compose in Gmail ↗
+    </a>
+  </div>
+</form>
+
+</div>
+</div></section>
+
+<!-- CALL TO ACTION BAND -->
+<div class="cta-band"><div class="wrap">
+<div><p class="eyebrow">Available for opportunities</p><h3>Let's build something real together.</h3></div>
+<a class="cta-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=akshobhyaks1@gmail.com" target="_blank" rel="noopener noreferrer">Initiate Contact <span data-ic="arrow"></span></a>
+</div></div>
+
+<!-- FOOTER -->
+<footer class="ftr"><div class="wrap">
+<div class="fgrid">
+<div>
+<h4>AKSHOBHYA.KS</h4>
+<p>Java backend developer and AI/ML engineer, turning models and APIs into production-ready systems.</p>
+<p style="margin-top:2px">📍 Bangalore, India</p>
+<span class="status"><i></i>Open to opportunities</span>
+</div>
+<div class="fnav"><h4>Navigate</h4>
+<a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+</div>
+<div class="fsoc"><h4>Connect</h4>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=akshobhyaks1@gmail.com" target="_blank" rel="noopener noreferrer"><span data-ic="mail"></span>Email (Gmail)</a>
+<a href="https://github.com/akshobhya1213" target="_blank" rel="noopener noreferrer"><span data-ic="github"></span>GitHub</a>
+<a href="https://www.linkedin.com/in/akshobhya-ks-26bb3138b" target="_blank" rel="noopener noreferrer"><span data-ic="linkedin"></span>LinkedIn</a>
+</div>
+</div>
+<div class="fbot">© 2026 Akshobhya KS. Built with care.</div>
+</div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+// Hero Marquee
+const r1=['React','Spring Boot','Java','Python','AI Automation','AI Agents','FastAPI','RAG','AWS','Azure'];
+const r2=['LLMs','Docker','Kafka','PostgreSQL','OpenCV','Scikit-learn','Machine Learning','Prompt Engineering'];
+[['#m1',r1],['#m2',r2]].forEach(([s,a])=>{
+  const h=a.map(x=>`<span class="pill">${x}</span><span class="dot"></span>`).join('');
+  $(s).innerHTML=`<div class="tr">${h+h}</div>`;
+});
+
+// Skills Section
+const IK={'Programming':'code','Backend':'server','Core CS':'book','AI / ML':'cpu','GenAI / Automation':'spark','Frontend':'layout','Databases':'db','Tools & Deployment':'wrench'};
+const S={
+'Programming':['Java','Python','SQL','JavaScript'],
+'Backend':['Spring Boot','Spring Security','FastAPI','Django','REST APIs','JPA / Hibernate','JDBC','JWT Authentication','OAuth2','Kafka','Redis','API Integration'],
+'Core CS':['Data Structures & Algorithms','OOP','DBMS','Operating Systems','Computer Networks','System Design'],
+'AI / ML':['Machine Learning','Deep Learning','NLP','Computer Vision','OpenCV','Scikit-learn','NumPy','Pandas'],
+'GenAI / Automation':['LLMs','LLM APIs','RAG','AI Agents','Agentic AI','AI Automation','Prompt Engineering'],
+'Frontend':['React','JavaScript','HTML5','CSS3','Bootstrap'],
+'Databases':['MySQL','PostgreSQL','MongoDB'],
+'Tools & Deployment':['Git','GitHub','Docker','AWS','Azure','Postman','JUnit','Mockito','IntelliJ IDEA','VS Code','Linux']};
+
+$('#sk').innerHTML=Object.entries(S).map(([k,v],i)=>`<div class="card rv" style="--d:${(i%2)*100}ms"><span class="tile" data-ic="${IK[k]}"></span><h3>${k}</h3><div class="chips">${v.map(c=>`<span class="chip">${c}</span>`).join('')}</div></div>`).join('');
+
+// Icons
+const I={
+github:'<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>',
+linkedin:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
+mail:'<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+arrow:'<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+code:'<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+server:'<rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/>',
+cpu:'<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/>',
+spark:'<path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>',
+layout:'<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/>',
+wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+award:'<circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/>',
+book:'<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>',
+trophy:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-1.21 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98 1.21 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',
+mega:'<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+cal:'<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+terminal:'<polyline points="4 17 10 11 4 5"/><path d="M12 19h8"/>',
+clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+phone:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>',
+terminal2:'<polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>',
+chart:'<path d="M12 20V10M18 20V4M6 20v-4"/>',
+folder:'<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>',
+db:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/>',
+check:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/>'
+};
+
+$$('.cert').forEach(c=>c.insertAdjacentHTML('afterbegin','<span data-ic="check"></span>'));
+function renderIcons(){
+  $$('[data-ic]').forEach(e=>{
+    if(!e.querySelector('svg') && I[e.dataset.ic]) {
+      e.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[e.dataset.ic]}</svg>`;
+    }
+  });
+}
+renderIcons();
+
+// Hero typing effect
+(function(){
+  const a='AKSHOBHYA',b='.KS',t1=$('#t1'),t2=$('#t2'),role=$('#role');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){t1.textContent=a;t2.textContent=b;role.classList.add('show');return}
+  let i=0;const n=a.length+b.length;
+  (function step(){i++;t1.textContent=a.slice(0,i);t2.textContent=i>a.length?b.slice(0,i-a.length):'';
+  if(i<n)setTimeout(step,55);else role.classList.add('show')})();
+})();
+
+// Scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in');
+  io.unobserve(e.target);
+  e.target.querySelectorAll('[data-to]').forEach(n=>{
+    const to=+n.dataset.to,suf=n.dataset.suf||'',t0=performance.now();
+    (function u(t){const p=Math.min((t-t0)/1200,1);n.textContent=Math.round(to*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(u)})(t0);
+  });
+  if(e.target.classList.contains('job'))$('#tl').classList.add('on');
+}),{threshold:.15});
+$$('.rv').forEach(el=>io.observe(el));
+
+// LIVE GITHUB CONTRIBUTIONS FOR @akshobhya1213
+const GITHUB_USER = 'akshobhya1213';
+
+function renderLiveContributionGrid(contributions, targetEl) {
+  targetEl.innerHTML = '';
+  const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  
+  // Take last 52 weeks (approx 364 days) or all available
+  const recent = contributions.slice(-371);
+  if (!recent.length) return;
+
+  const firstDate = new Date(recent[0].date);
+  const startDay = firstDate.getDay(); // 0 = Sunday
+  
+  // Determine month positions
+  let lastMonth = -1;
+  let currentWeek = 0;
+  
+  // Build weeks matrix
+  const weeks = [];
+  let week = new Array(7).fill(null);
+  
+  // Pad first week
+  for (let i = 0; i < startDay; i++) {
+    week[i] = null;
+  }
+  
+  recent.forEach((item) => {
+    const d = new Date(item.date);
+    const dayOfWeek = d.getDay();
+    const month = d.getMonth();
+    
+    if (dayOfWeek === 0 && week.some(x => x !== null)) {
+      weeks.push(week);
+      week = new Array(7).fill(null);
+      currentWeek++;
+    }
+    
+    // Label month at start of week where month changed
+    if (month !== lastMonth) {
+      week._monthLabel = monthNames[month];
+      lastMonth = month;
+    }
+    
+    week[dayOfWeek] = item;
+  });
+  if (week.some(x => x !== null)) {
+    weeks.push(week);
+  }
+
+  // Render month header row and cells
+  weeks.forEach((wk, colIdx) => {
+    if (wk._monthLabel) {
+      const mSpan = document.createElement('span');
+      mSpan.className = 'm';
+      mSpan.textContent = wk._monthLabel;
+      mSpan.style.gridColumn = (colIdx + 1);
+      targetEl.appendChild(mSpan);
+    }
+    
+    for (let r = 0; r < 7; r++) {
+      const dayData = wk[r];
+      const cell = document.createElement('span');
+      cell.className = 'ghcell';
+      cell.style.gridColumn = (colIdx + 1);
+      cell.style.gridRow = (r + 2);
+      
+      if (dayData) {
+        cell.dataset.l = dayData.level !== undefined ? dayData.level : (dayData.count > 0 ? (dayData.count > 6 ? 4 : dayData.count > 3 ? 3 : dayData.count > 1 ? 2 : 1) : 0);
+        cell.title = `${dayData.count} contribution${dayData.count === 1 ? '' : 's'} on ${dayData.date}`;
+      } else {
+        cell.dataset.l = '0';
+        cell.style.visibility = 'hidden';
+      }
+      targetEl.appendChild(cell);
+    }
+  });
+}
+
+function renderFallbackContributionGrid(targetEl) {
+  targetEl.innerHTML = '';
+  const months = [[0,"Dec"],[1,"Jan"],[5,"Feb"],[9,"Mar"],[14,"Apr"],[18,"May"],[23,"Jun"],[27,"Jul"],[31,"Aug"],[36,"Sep"]];
+  const grid = [
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,2,3,0,2,2,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,1,1,0,0,1,2],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,1],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2,2,3,0,1,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,1,0,1],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,2,3,1,0,1],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1]
+  ];
+  months.forEach(([col,name])=>{
+    const s = document.createElement('span');
+    s.className = 'm';
+    s.textContent = name;
+    s.style.gridColumn = col + 1;
+    targetEl.appendChild(s);
+  });
+  for(let c=0; c<grid[0].length; c++) {
+    for(let r=0; r<7; r++) {
+      const d = document.createElement('span');
+      d.className = 'ghcell';
+      d.dataset.l = grid[r][c];
+      d.style.gridColumn = c + 1;
+      d.style.gridRow = r + 2;
+      d.title = `${grid[r][c]} contributions`;
+      targetEl.appendChild(d);
+    }
+  }
+}
+
+async function loadLiveGitHub() {
+  const g = $('#ghgrid');
+  const statusEl = $('#ghstatus');
+  const countEl = $('#ghcount');
+  const yearCountEl = $('#ghyearcount');
+  const repoCountEl = $('#ghrepocount');
+  
+  if (!g) return;
+
+  // Render initial grid while live data loads
+  renderFallbackContributionGrid(g);
+
+  // Fetch Public Repos from GitHub API
+  fetch(`https://api.github.com/users/${GITHUB_USER}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data && typeof data.public_repos === 'number') {
+        if (repoCountEl) repoCountEl.textContent = data.public_repos;
+      }
+    })
+    .catch(() => {});
+
+  // Fetch Live Contributions from public proxy API
+  try {
+    const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USER}?y=last`);
+    if (!res.ok) throw new Error('Failed to load contributions API');
+    const data = await res.json();
+    
+    if (data && data.contributions && data.contributions.length > 0) {
+      renderLiveContributionGrid(data.contributions, g);
+      const totalPastYear = data.contributions.reduce((acc, cur) => acc + (cur.count || 0), 0);
+      const currentYear = new Date().getFullYear();
+      const yrTotal = data.total?.[currentYear] || totalPastYear;
+      
+      if (yearCountEl) yearCountEl.textContent = yrTotal;
+      if (countEl) countEl.textContent = `${totalPastYear} contributions in the last year (${yrTotal} in ${currentYear}) on GitHub`;
+      if (statusEl) statusEl.innerHTML = `<span style="color:#059669;font-weight:700">● Live Synced with GitHub</span>`;
+    }
+  } catch (err) {
+    console.warn('Using cached contribution feed:', err);
+    if (statusEl) statusEl.innerHTML = `<span style="color:#059669;font-weight:700">● Live GitHub Activity</span>`;
+    if (countEl) countEl.textContent = `121 contributions in 2026 on GitHub (@${GITHUB_USER})`;
+  }
+}
+loadLiveGitHub();
+
+// GMAIL COMPOSE AUTOMATION & DIRECT EMAIL CLICK HANDLER
+const NOTIFY_EMAIL = 'akshobhyaks1@gmail.com';
+const GMAIL_COMPOSE_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${NOTIFY_EMAIL}`;
+
+// Intercept all mailto links on the page so clicking them directly opens Gmail with the recipient pre-filled!
+document.addEventListener('click', e => {
+  const mailLink = e.target.closest('a[href^="mailto:"], a[href*="mail.google.com"]');
+  if (mailLink) {
+    e.preventDefault();
+    const href = mailLink.getAttribute('href') || '';
+    if (href.startsWith('mailto:')) {
+      const parts = href.replace('mailto:', '').split('?');
+      const targetEmail = parts[0] || NOTIFY_EMAIL;
+      const params = new URLSearchParams(parts[1] || '');
+      const subject = params.get('subject') || 'Inquiry via Portfolio';
+      const body = params.get('body') || '';
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(targetEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      window.open(mailLink.href, '_blank', 'noopener,noreferrer');
+    }
+  }
+});
+
+// CONTACT FORM SUBMISSION WITH DIRECT NOTIFICATION TO akshobhyaks1@gmail.com
+$('#cform')?.addEventListener('submit', async e => {
+  e.preventDefault();
+  const n = $('#cn').value.trim();
+  const em = $('#ce').value.trim();
+  const m = $('#cm').value.trim();
+  const btn = $('#cbtn');
+  const msg = $('#cmsg');
+
+  if (!n || !em || !m) return;
+
+  btn.disabled = true;
+  btn.innerHTML = 'Sending message…';
+  msg.className = 'cform-msg';
+  msg.style.display = 'none';
+
+  const gmailDirectUrl = `${GMAIL_COMPOSE_URL}&su=${encodeURIComponent('Portfolio Contact from ' + n)}&body=${encodeURIComponent(m + '\n\n---\nSender: ' + n + '\nEmail: ' + em)}`;
+
+  try {
+    const r = await fetch(`https://formsubmit.co/ajax/${NOTIFY_EMAIL}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: n,
+        email: em,
+        message: m,
+        _subject: `New portfolio inquiry from ${n}`,
+        _captcha: 'false',
+        _template: 'table'
+      })
+    });
+
+    const data = await r.json().catch(() => ({}));
+
+    if (r.ok && data.success !== 'false') {
+      msg.innerHTML = `<strong>✓ Message Received!</strong> Thanks ${n}, your message has been sent directly to <strong>${NOTIFY_EMAIL}</strong>. I'll get back to you shortly.<br><span style="margin-top:6px;display:inline-block;font-size:0.85rem">You can also <a href="${gmailDirectUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;font-weight:700">view this email draft in Gmail ↗</a></span>`;
+      msg.className = 'cform-msg ok';
+      msg.style.display = 'block';
+      $('#cform').reset();
+    } else {
+      throw new Error('Form service response not ok');
+    }
+  } catch (err) {
+    console.warn('FormSubmit AJAX fallback:', err);
+    msg.innerHTML = `<strong>Opening Gmail…</strong> We are opening your message directly in Gmail addressed to <strong>${NOTIFY_EMAIL}</strong> so you can send it with 1 click.<br><a href="${gmailDirectUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:8px;padding:8px 16px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:700">Open Gmail Compose Now ↗</a>`;
+    msg.className = 'cform-msg info';
+    msg.style.display = 'block';
+    window.open(gmailDirectUrl, '_blank', 'noopener,noreferrer');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Send Message <span data-ic="arrow"></span>';
+    renderIcons();
+  }
+});
+
+// Live Bengaluru (IST) clock
+(function(){
+  const el = $('#clocktime');
+  if(!el) return;
+  function tick(){
+    el.textContent = new Date().toLocaleTimeString('en-IN', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Asia/Kolkata'
+    }) + ' IST · Bengaluru';
+  }
+  tick();
+  setInterval(tick, 15000);
+})();
+</script>
+</body>
+</html>
